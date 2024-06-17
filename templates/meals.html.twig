@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a></p>
+    <table>
+        <tr>
+            <td class="table-column-header"><span class="table-header-text">ID</span></td>
+            <td class="table-column-header"><span class="table-header-text">PERIOD</span></td>
+            <td class="table-column-header"><span class="table-header-text">DATE</span></td>
+            <td><a href="{{ base_path }}/new/meal">New</a></td>
+        </tr>
+
+        {% for meal in meals %}
+            <tr>
+                <td>{{ meal.id }}</td>
+                <td>{{ meal.period.name }}</td>
+                <td>{{ meal.date }}</td>
+                <td><a href="{{ base_path }}/meal/{{ meal.id }}">View</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{%  endblock %}

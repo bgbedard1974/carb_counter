@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/meals">Meals</a>
+    {%  if meal.id %}
+        &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/meal/{{ meal.id }}">{{ meal.date }} {{ meal.period.name }}</a>
+    {%  endif %}
+    </p>
+
+    <form name="meal_form" method="post" action="{{ base_path }}/save/meal">
+        <input type="hidden" name="id" value="{{ meal.id }}" />
+        <table>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Period:</span></td>
+                <td><select name="period_id">
+                        {% include 'options.html.twig' with {'options': period_options, 'id': meal.period_id} %}
+                    </select></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Date:</span></td>
+                <td><input type="text" name="date" value="{{ meal.date }}" size="50" /></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Operations:</span></td>
+                <td><input class="form-button" type="submit" name="submit" value="SAVE" /></td>
+            </tr>
+        </table>
+    </form>
+{%  endblock %}

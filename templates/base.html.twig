@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>{{ site_name }}</title>
+        <link rel="stylesheet" href="{{ base_path }}/styles.css">
+    </head>
+    <body>
+        <div id="page">
+            <div id="header">
+                {% include 'header.html.twig' %}
+            </div>
+            <div id="page-content">
+                <div id="left-nav">
+                    {% include 'navbar.html.twig' %}
+                </div>
+                <div id="content">
+                    <div id="page-title">{{ page_title }}</div>
+                    {% if message %}
+                        <p> {{ message }}</p>
+                    {% endif %}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div id="footer">
+                {% include 'footer.html.twig' %}
+            </div>
+        </div>
+    </body>
+</html>

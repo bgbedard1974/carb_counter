@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/foods">Foods</a>
+        {%  if food.id %}
+            &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/food/{{ food.id }}">{{ food.name }}</a>
+        {%  endif %}
+    </p>
+
+    <form name="food_form" method="post" action="{{ base_path }}/save/food">
+        <input type="hidden" name="id" value="{{ food.id }}" />
+        <table>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Name:</span></td>
+                <td><input type="text" name="name" value="{{ food.name }}" size="50" /></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Description:</span></td>
+                <td><textarea cols="48" rows="5" name="description">{{ food.description }}</textarea></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Carbs:</span></td>
+                <td><input type="text" name="carbs" value="{{ food.carbs }}" size="50" /></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Sodium:</span></td>
+                <td><input type="text" name="sodium" value="{{ food.sodium }}" size="50" /></td>
+            </tr>
+            <tr>
+                <td class="table-header"><span class="table-header-text">Operations:</span></td>
+                <td><input class="form-button" type="submit" name="submit" value="SAVE" /></td>
+            </tr>
+        </table>
+    </form>
+{%  endblock %}

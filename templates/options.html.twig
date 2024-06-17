@@ -1,0 +1,3 @@
+{% for key, value in options %}
+<option value="{{ key }}"{% if id == key %} selected{% endif %}>{{ value }}</option>
+{% endfor %}

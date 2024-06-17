@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+
+    <p><a href="{{ base_path }}/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/dates">Dates</a></p>
+
+    <p><strong>{{ day.month_name }} {{ day.day }}, {{ day.year }}</strong></p>
+    {% if meals %}
+
+        <table>
+            <tr>
+                <td class="table-column-header"><span class="table-header-text">Meal</span></td>
+                <td class="table-column-header"><span class="table-header-text">Carbs</span></td>
+                <td class="table-column-header"><span class="table-header-text">Sodium</span></td>
+                <td class="table-column-header">&nbsp;</td>
+            </tr>
+
+        {% for meal in meals %}
+            <tr>
+                <td>{{ meal.period.name }}</td>
+                <td>{{ meal.carbs }}g</td>
+                <td>{{ meal.sodium }}mg</td>
+                <td><a href="{{ base_path }}/meal/{{ meal.id }}">View</a></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td>&nbsp;</td>
+                <td><strong>{{ total_carbs }}g</strong></td>
+                <td><strong>{{ total_sodium }}mg</strong></td>
+                <td>&nbsp;</td>
+            </tr>
+
+        </table>
+
+    {% else %}
+        <p>No Meals found. <a href="{{ base_path }}/new/meal">New Meal</a></p>
+    {% endif %}
+
+{%  endblock %}

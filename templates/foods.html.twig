@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a></p>
+
+    <table>
+        <tr>
+            <td class="table-column-header"><span class="table-header-text">ID</span></td>
+            <td class="table-column-header"><span class="table-header-text">NAME</span></td>
+            <td class="table-column-header"><span class="table-header-text">CARBS</span></td>
+            <td class="table-column-header"><span class="table-header-text">SODIUM</span></td>
+            <td><a href="{{ base_path }}/new/food">New</a></td>
+        </tr>
+
+        {% for food in foods %}
+            <tr>
+                <td>{{ food.id }}</td>
+                <td>{{ food.name }}</td>
+                <td>{{ food.carbs }}g</td>
+                <td>{{ food.sodium }}mg</td>
+                <td><a href="{{ base_path }}/food/{{ food.id }}">View</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{%  endblock %}

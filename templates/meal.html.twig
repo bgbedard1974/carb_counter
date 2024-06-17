@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/meals">Meals</a></p>
+
+    <table>
+        <tr>
+            <td class="table-header"><span class="table-header-text">Id:</span></td><td>{{ meal.id }}</td>
+        </tr>
+        <tr>
+            <td class="table-header"><span class="table-header-text">Period:</span></td><td>{{ meal.period.name }}</td>
+        </tr>
+        <tr>
+            <td class="table-header"><span class="table-header-text">Date:</span></td><td>{{ meal.date }}</td>
+        </tr>
+        <tr>
+            <td class="table-header"><span class="table-header-text">Operations:</span></td>
+            <td><a href="{{ base_path }}/edit/meal/{{ meal.id }}">Edit</a></td>
+        </tr>
+    </table>
+
+    <p><strong>Food</strong></p>
+
+    <table>
+        <tr>
+            <td class="table-column-header"><span class="table-header-text">AMOUNT</span></td>
+            <td class="table-column-header"><span class="table-header-text">NAME</span></td>
+            <td class="table-column-header"><span class="table-header-text">CARBS</span></td>
+            <td class="table-column-header"><span class="table-header-text">SODIUM</span></td>
+        </tr>
+        {% for fd in meal.foods %}
+            <tr>
+                <td>{{ fd.amount }}</td>
+                <td>{{ fd.food.name }}</td>
+                <td>{{ fd.carbs }}g</td>
+                <td>{{ fd.sodium }}mg</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>&nbsp;</td>
+            <td><strong>Totals</strong></td>
+            <td>{{ meal.carbs }}g</td>
+            <td>{{ meal.sodium }}mg</td>
+        </tr>
+
+    </table>
+
+    <p><a href="{{ base_path }}/add-food/meal/{{ meal.id }}">Add</a></p>
+
+{%  endblock %}

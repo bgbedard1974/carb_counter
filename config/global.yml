@@ -1,0 +1,70 @@
+'routes':
+  -
+    path: /
+    controller: IndexController
+  -
+    path: /foods
+    controller: FoodController
+  -
+    path: /food/{id}
+    controller: FoodController
+    action: view
+  -
+    path: /new/food
+    controller: FoodController
+    action: new
+  -
+    path: /edit/food/{id}
+    controller: FoodController
+    action: edit
+  -
+    path: /save/food
+    controller: FoodController
+    action: save
+    method: post
+  -
+    path: /meals
+    controller: MealController
+  -
+    path: /meal/{id}
+    controller: MealController
+    action: view
+  -
+    path: /new/meal
+    controller: MealController
+    action: new
+  -
+    path: /edit/meal/{id}
+    controller: MealController
+    action: edit
+  -
+    path: /save/meal
+    controller: MealController
+    action: save
+    method: post
+  -
+    path: /add-food/meal/{id}
+    controller: MealController
+    action: addFood
+  -
+    path: /save/add-food
+    controller: MealController
+    action: saveFood
+    method: post
+  -
+    path: /dates
+    controller: MealDayController
+  -
+    path: /meals_by_day/{day}
+    controller: MealDayController
+    action: view
+db_info:
+  db_name: carbcounter
+  username: carbcounter
+  password: Wall99paper!
+  hostname: localhost
+repositories:
+  food: FoodRepository
+  meal: MealRepository
+  meal_period: MealPeriodRepository
+  meal_food: MealFoodRepository

@@ -1,0 +1,6 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p>Are you sure you want to delete {{ name }}?</p>
+    <a href="/delete/{{ type }}/{{ id }}">Yes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/{{ type_plural }}">No</a>
+{%  endblock %}

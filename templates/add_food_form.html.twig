@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/meals">Meals</a>
+        {%  if meal.id %}
+            &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{{ base_path }}/meal/{{ meal.id }}">{{ meal.date }} - {{ meal.period.name }}</a>
+        {%  endif %}
+    </p>
+
+    <form name="add_food_form" method="post" action="{{ base_path }}/save/add-food">
+        <input type="hidden" name="id" value="{{ meal.id }}" />
+        <table>
+            <tr>
+                <td class="table-column-header"><span class="table-header-text">Food</span></td>
+                <td class="table-column-header"><span class="table-header-text">Amount</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="food_id_1">
+                        {% include 'options.html.twig' with {'options': food_options} %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="amount_1" value="" size="10" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="food_id_2">
+                        {% include 'options.html.twig' with {'options': food_options} %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="amount_2" value="" size="10" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="food_id_3">
+                        {% include 'options.html.twig' with {'options': food_options} %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="amount_3" value="" size="10" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="food_id_4">
+                        {% include 'options.html.twig' with {'options': food_options} %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="amount_4" value="" size="10" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="food_id_5">
+                        {% include 'options.html.twig' with {'options': food_options} %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="amount_5" value="" size="10" />
+                </td>
+            </tr>
+        </table>
+
+        <p><input class="form-button" type="submit" name="submit" value="SAVE" /></p>
+
+    </form>
+
+{%  endblock %}

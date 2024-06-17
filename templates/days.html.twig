@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{%  block content %}
+    <p><a href="{{ base_path }}/">Home</a></p>
+
+    <table>
+        <tr>
+            <td class="table-column-header"><span class="table-header-text">DATE</span></td>
+            <td>&nbsp;</td>
+        </tr>
+
+        {% for day in days %}
+            <tr>
+                <td>{{ day.month_name }} {{ day.day }}, {{ day.year }}</td>
+                <td><a href="{{ base_path }}/meals_by_day/{{ day.string }}">View</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{%  endblock %}
